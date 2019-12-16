@@ -89,9 +89,7 @@ body {
 }
 
 .field-selector {
-    opacity: 0;
-    width: 0;
-    height: 0;
+    display: none;
 }
 
 .field-selector:checked + .field-container {
@@ -109,7 +107,7 @@ body {
 .field {
     position: relative;
     grid-column: 1 / 5;
-    height: 40px;
+    min-height: 40px;
     cursor: w-resize;
 }
 
@@ -138,37 +136,39 @@ body {
 }
 
 .field-container {
-    position: absolute;
     cursor: pointer;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
     display: flex;
-    height: 40px;
+    flex-wrap: wrap;
+    min-height: 40px;
     justify-content: flex-start;
     align-items: center;
     background-color: #fff;
-    padding-right: 12px;
+    padding: 10px 12px 10px 30px;
     border-radius: 3px;
     overflow: hidden;
 }
 
 .field-icon-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
     flex-shrink: 0;
-    height: 40px;
+    height: 100%;
     width: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #E4E4E7;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
 }
 
-.field:hover .field-selector:not(:checked) + .field-container {
+.field:hover> .field-selector:not(:checked) + .field-container:not(.child-hover) {
     box-shadow: 0 0 0 2px var( --color-blue-light );
 }
 
-.field:hover .field-icon-container {
+.field:hover > .field-container:not(.child-hover) > .field-icon-container {
     background-color: var( --color-blue-light );
 }
 
@@ -192,7 +192,7 @@ body {
     transform: rotate( 90deg );
 }
 
-.field:hover .field-icon {
+.field:hover > .field-container:not(.child-hover) > .field-icon-container .field-icon {
     fill: var( --color-blue );
 }
 
@@ -209,6 +209,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    flex: 1 1 0;
 }
 
 .field-copy-pill {
@@ -248,6 +249,16 @@ body {
     width: 12px;
     fill: var( --color-blue);
     margin-left: 6px;
+}
+
+.sub-fields {
+    flex: 1 1 100%;
+    padding: 12px 10px 0 20px
+}
+
+.sub-fields .field-container {
+    background: #f3f3f4;
+    margin-bottom: 10px;
 }
 
 .add-field-container {
