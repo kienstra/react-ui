@@ -126,7 +126,7 @@ body {
     cursor: ew-resize;
 }
 
-.field::after {
+.field:not(.sub-field)::after {
     content: '';
     position: absolute;
     top: 0;
@@ -136,6 +136,7 @@ body {
 }
 
 .field-container {
+    position: relative;
     cursor: pointer;
     display: flex;
     flex-wrap: wrap;
@@ -164,12 +165,16 @@ body {
     border-bottom-left-radius: 3px;
 }
 
-.field:hover> .field-selector:not(:checked) + .field-container:not(.child-hover) {
+.field > .field-selector:not(:checked) + .field-container:not(.child-hover):hover {
     box-shadow: 0 0 0 2px var( --color-blue-light );
 }
 
-.field:hover > .field-container:not(.child-hover) > .field-icon-container {
+.field > .field-container:not(.child-hover):hover > .field-icon-container {
     background-color: var( --color-blue-light );
+}
+
+.field > .field-container:not(.child-hover):hover > .field-icon-container .field-icon {
+    fill: var( --color-blue );
 }
 
 .field-icon-container:hover {
@@ -190,10 +195,6 @@ body {
     fill: var( --color-blue );
     display: none;
     transform: rotate( 90deg );
-}
-
-.field:hover > .field-container:not(.child-hover) > .field-icon-container .field-icon {
-    fill: var( --color-blue );
 }
 
 .field-icon-container:hover .field-icon {
@@ -256,9 +257,18 @@ body {
     padding: 12px 10px 0 20px
 }
 
+.sub-fields .field {
+    cursor: default;
+    display: block;
+    padding: 5px 0;
+}
+
+.sub-fields .field:last-of-type {
+    margin-bottom: 8px;
+}
+
 .sub-fields .field-container {
     background: #f3f3f4;
-    margin-bottom: 10px;
 }
 
 .add-field-container {
