@@ -2,6 +2,35 @@
 	<head>
 		<title>Block Builder UI Experiment</title>
 		<link rel="stylesheet" href="style.css" />
+		<script>
+			function dragStart( element, event ) {
+				if ( event.target !== element ) {
+					return
+				}
+
+				const clone = element.cloneNode( true );
+
+				clone.style.position = 'absolute';
+				clone.style.top = '-999px';
+				clone.style.width = element.offsetWidth;
+				clone.classList.add('clone');
+				clone.querySelector( '.field-selector' ).removeAttribute( 'checked' );
+
+				element.classList.add( 'dragging' );
+
+				document.body.appendChild( clone );
+				event.dataTransfer.setDragImage( clone, 0, 0 );
+			}
+
+			function dragEnd( element ) {
+				element.setAttribute( 'draggable', 'false' );
+				element.classList.remove( 'dragging' );
+				const clones = document.getElementsByClassName( 'clone' );
+				for ( const clone of clones ) {
+					document.body.removeChild( clone );
+				}
+			}
+		</script>
 	</head>
 	<body>
 		<div class="wp-admin">
@@ -19,10 +48,10 @@
 					<div class="fields">
 
 						<!-- New Field -->
-						<label class="field">
+						<label class="field" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
 							<input type="radio" name="field-selector" class="field-selector">
 							<div class="field-container">
-								<div class="field-icon-container">
+								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
 									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 										<path fill="none" d="M0 0h24v24H0V0z"/>
 										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
@@ -47,10 +76,10 @@
 						<!-- End of Field -->
 
 						<!-- New Field -->
-						<label class="field field--1/2">
+						<label class="field field--1/2" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
 							<input type="radio" name="field-selector" class="field-selector" checked="checked">
 							<div class="field-container">
-								<div class="field-icon-container">
+								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
 									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 										<path fill="none" d="M0 0h24v24H0V0z"/>
 										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
@@ -75,10 +104,10 @@
 						<!-- End of Field -->
 
 						<!-- New Field -->
-						<label class="field field--1/2">
+						<label class="field field--1/2" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
 							<input type="radio" name="field-selector" class="field-selector">
 							<div class="field-container">
-								<div class="field-icon-container">
+								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
 									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 										<path fill="none" d="M0 0h24v24H0V0z"/>
 										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
@@ -103,10 +132,10 @@
 						<!-- End of Field -->
 
 						<!-- New Field -->
-						<label class="field">
+						<label class="field" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
 							<input type="radio" name="field-selector" class="field-selector">
 							<div class="field-container">
-								<div class="field-icon-container">
+								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
 									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 										<path fill="none" d="M0 0h24v24H0V0z"/>
 										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
@@ -131,10 +160,10 @@
 						<!-- End of Field -->
 
 						<!-- New Field -->
-						<label class="field field--1/4">
+						<label class="field field--1/4" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
 							<input type="radio" name="field-selector" class="field-selector">
 							<div class="field-container">
-								<div class="field-icon-container">
+								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
 									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 										<path fill="none" d="M0 0h24v24H0V0z"/>
 										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
@@ -159,10 +188,10 @@
 						<!-- End of Field -->
 
 						<!-- New Field -->
-						<label class="field field--3/4">
+						<label class="field field--3/4" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
 							<input type="radio" name="field-selector" class="field-selector">
 							<div class="field-container">
-								<div class="field-icon-container">
+								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
 									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 										<path fill="none" d="M0 0h24v24H0V0z"/>
 										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
@@ -187,10 +216,10 @@
 						<!-- End of Field -->
 
 						<!-- New Field -->
-						<label class="field field--1/2">
+						<label class="field field--1/2" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
 							<input type="radio" name="field-selector" class="field-selector">
 							<div class="field-container">
-								<div class="field-icon-container">
+								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
 									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 										<path fill="none" d="M0 0h24v24H0V0z"/>
 										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
@@ -215,10 +244,10 @@
 						<!-- End of Field -->
 
 						<!-- New Field -->
-						<label class="field">
+						<label class="field" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
 							<input type="radio" name="field-selector" class="field-selector">
 							<div class="field-container">
-								<div class="field-icon-container">
+								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
 									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 										<path fill="none" d="M0 0h24v24H0V0z"/>
 										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
@@ -240,10 +269,10 @@
 								</div>
 								<div class="sub-fields">
 									<!-- New Sub-Field -->
-									<label class="field sub-field" onmouseenter="this.parentElement.parentElement.classList.add('child-hover')" onmouseleave="this.parentElement.parentElement.classList.remove('child-hover')">
+									<label class="field sub-field" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)" onmouseenter="this.parentElement.parentElement.classList.add('child-hover')" onmouseleave="this.parentElement.parentElement.classList.remove('child-hover')">
 										<input type="radio" name="field-selector" class="field-selector">
 										<div class="field-container">
-											<div class="field-icon-container">
+											<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
 												<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 													<path fill="none" d="M0 0h24v24H0V0z"/>
 													<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
@@ -268,10 +297,10 @@
 									<!-- End of Sub-Field -->
 
 									<!-- New Sub-Field -->
-									<label class="field sub-field" onmouseenter="this.parentElement.parentElement.classList.add('child-hover')" onmouseleave="this.parentElement.parentElement.classList.remove('child-hover')">
+									<label class="field sub-field" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)" onmouseenter="this.parentElement.parentElement.classList.add('child-hover')" onmouseleave="this.parentElement.parentElement.classList.remove('child-hover')">
 										<input type="radio" name="field-selector" class="field-selector">
 										<div class="field-container">
-											<div class="field-icon-container">
+											<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
 												<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 													<path fill="none" d="M0 0h24v24H0V0z"/>
 													<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>

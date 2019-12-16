@@ -92,15 +92,15 @@ body {
     display: none;
 }
 
-.field-selector:checked + .field-container {
+.field:not(.dragging) .field-selector:checked + .field-container {
     box-shadow: 0 0 0 2px var( --color-blue );
 }
 
-.field-selector:checked + .field-container .field-icon-container {
+.field:not(.dragging) .field-selector:checked + .field-container .field-icon-container {
     background-color: var( --color-blue-light );
 }
 
-.field-selector:checked + .field-container .field-icon{
+.field:not(.dragging) .field-selector:checked + .field-container .field-icon{
     fill: var( --color-blue );
 }
 
@@ -149,6 +149,12 @@ body {
     overflow: hidden;
 }
 
+.field.dragging .field-container {
+    background: transparent;
+    padding: 9px 11px 9px 29px;
+    border: 1px dashed var( --color-body );
+}
+
 .field-icon-container {
     position: absolute;
     left: 0;
@@ -165,15 +171,15 @@ body {
     border-bottom-left-radius: 3px;
 }
 
-.field > .field-selector:not(:checked) + .field-container:not(.child-hover):hover {
+.field:not(.dragging) > .field-selector:not(:checked) + .field-container:not(.child-hover):hover {
     box-shadow: 0 0 0 2px var( --color-blue-light );
 }
 
-.field > .field-container:not(.child-hover):hover > .field-icon-container {
+.field:not(.dragging) > .field-container:not(.child-hover):hover > .field-icon-container {
     background-color: var( --color-blue-light );
 }
 
-.field > .field-container:not(.child-hover):hover > .field-icon-container .field-icon {
+.field:not(.dragging) > .field-container:not(.child-hover):hover > .field-icon-container .field-icon {
     fill: var( --color-blue );
 }
 
@@ -197,11 +203,11 @@ body {
     transform: rotate( 90deg );
 }
 
-.field-icon-container:hover .field-icon {
+.field:not(.dragging) .field-icon-container:hover .field-icon {
     display: none;
 }
 
-.field-icon-container:hover .field-grab-indicator {
+.field:not(.dragging) .field-icon-container:hover .field-grab-indicator {
     display: block;
 }
 
