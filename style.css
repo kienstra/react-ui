@@ -91,13 +91,20 @@ body {
     padding: 4px;
     border: none;
     border-radius: 3px;
-    box-shadow: 0 0 0 2px #fff;
+    box-shadow: 0 0 0 2px #F3F3F4;
 }
 
 .block-icon:hover {
     cursor: pointer;
     background-color: var( --color-blue-light );
+    box-shadow: 0 0 0 2px var( --color-blue-light );
+}
+
+.block-icon:focus {
+    cursor: pointer;
+    background-color: var( --color-blue-light );
     box-shadow: 0 0 0 2px var( --color-blue );
+    outline: none;
 }
 
 .block-icon svg {
@@ -120,7 +127,7 @@ body {
 }
 
 .block-name:hover {
-    background-color: #F3F3F4;
+    box-shadow: 0 0 0 2px var( --color-blue-light );
 }
 .block-name:focus {
     outline: none;
