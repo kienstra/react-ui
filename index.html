@@ -45,8 +45,13 @@
 					</div>
 				</div>
 				<div class="main">
+
+					<!-- Editor Tab -->
+					<input type="radio" id="field-location--editor" class="fields-location-toggle" checked="checked" name="fields-location-toggle">
+					<label class="fields-location-tab" for="field-location--editor">Editor Fields</label>
+
 					<!-- Editor Fields -->
-					<div class="fields">
+					<div class="fields fields--editor">
 
 						<!-- New Field -->
 						<label class="field" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
@@ -353,6 +358,11 @@
 						</div>
 
 					</div>
+
+					<!-- Insepctor Tab -->
+					<input type="radio" id="field-location--inspector" class="fields-location-toggle" name="fields-location-toggle">
+					<label class="fields-location-tab" for="field-location--inspector">Inspector Fields</label>
+
 					<!-- Insepctor Fields -->
 					<div class="fields fields--inspector">
 
