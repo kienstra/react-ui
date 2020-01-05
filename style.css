@@ -261,13 +261,17 @@ body {
 .field-copy-pill {
     position: relative;
     height: 20px;
-    display: flex;
+    display: none;
     align-items: center;
     padding-left: 6px;
     padding-right: 4px;
     background-color: var( --color-blue-light );
     margin-left: auto;
     border-radius: 3px;
+}
+
+.field:hover>.field-container>.field-copy-pill {
+    display: flex;
 }
 
 .field-copy-pill:hover {
