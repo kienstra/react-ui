@@ -73,6 +73,9 @@ body {
     justify-content: flex-start;
     align-items: center;
     padding-top: 50px;
+    width: 610px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .side {
@@ -81,36 +84,42 @@ body {
     border-left: 1px solid #e2e4e7;
 }
 
-.fields-location-toggle {
-    width: 610px;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.fields-location-toggle button {
-    border: none;
-    background-color: transparent;
+.fields-location-tab {
+    position: absolute;
     font-size: 13px;
-    padding: 0;
     cursor: pointer;
+    left: 0;
 }
 
-.fields-location-toggle button:last-of-type {
-    margin-left: 2em;
+.fields-location-tab:last-of-type {
+    margin-left: 110px;
 }
 
-.fields-location-toggle button.active {
+.fields-location-toggle {
+    display: none;
+}
+
+.fields-location-toggle:checked + .fields-location-tab {
     font-weight: 700;
+}
+
+.fields-location-toggle:checked + .fields-location-tab + .fields {
+    display: grid;
 }
 
 .fields {
     width: 610px;
     background-color: #F3F3F4;
     padding: 20px;
-    display: grid;
+    display: none;
     grid-template-columns: repeat( 4, calc( 25% - 15px ) );
     grid-gap: 20px;
-    margin-top: 20px;
+    margin-top: 36px;
+    margin-bottom: 60px;
+}
+
+.fields--inspector {
+    max-width: 280px;
 }
 
 .field-selector {
@@ -151,6 +160,11 @@ body {
     cursor: ew-resize;
 }
 
+.fields--inspector .field--1\/4,
+.fields--inspector .field--1\/2,
+.fields--inspector .field--3\/4 {
+    grid-column: 1 / 5;
+}
 .field:not(.sub-field)::after {
     content: '';
     position: absolute;
@@ -274,6 +288,14 @@ body {
 }
 
 .field--1\/4 .field-copy-pill svg {
+    margin-left: 0;
+}
+
+.fields--inspector .field-copy-pill span {
+    display: none;
+}
+
+.fields--inspector .field-copy-pill svg {
     margin-left: 0;
 }
 
