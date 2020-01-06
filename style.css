@@ -17,6 +17,10 @@ body {
     font-weight: 500;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 .wp-admin {
     display: grid;
     grid-template-columns: 160px 1fr;
@@ -383,6 +387,7 @@ body {
 }
 
 .side>div {
+    position: relative;
     padding-top: 8px;
     padding-right: 16px;
     padding-bottom: 8px;
@@ -391,6 +396,11 @@ body {
 .side label {
     font-size: 13px;
     font-weight: 400;
+}
+
+.side .help-text {
+    font-style: italic;
+    color: #666;
 }
 .side input[type="text"],
 .side input[type="number"],
@@ -436,6 +446,34 @@ body {
     border-left: none;
 }
 
+.field-type-button {
+    font-size: 13px;
+    width: 100%;
+    color: #0075af;
+    border-color: #0075af;
+    background: #f3f5f6;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    justify-content: center;
+    height: 28px;
+    margin-top: 4px;
+}
+
+.move-location-button {
+    font-size: 13px;
+    width: 100%;
+    color: #0075af;
+    border-color: #0075af;
+    background: #f3f5f6;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    justify-content: center;
+    height: 28px;  
+    margin-top: 4px;
+}
+
 .delete-field-button {
     font-size: 13px;
     width: 100%;
@@ -447,4 +485,25 @@ body {
     border-radius: 3px;
     justify-content: center;
     height: 28px;
+    margin-top: 4px;
+}
+
+.side .help-tip {
+    font-size: 10px;
+    font-weight: 700;
+    color: var( --color-blue);
+    width: 14px;
+    height: 14px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    top: -1px;
+    position: relative;
+    background-color: var( --color-blue-light );
+    border-radius: 50%;
+    margin-left: 4px;
+}
+
+.side .help-tip:hover {
+    cursor: default;
 }

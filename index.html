@@ -585,20 +585,22 @@
 					</div>
 					<div>
 						<label for="field_label_input">Field Label</label>
+						<span class="help-tip">?</span>
 						<input id="field_label_input" type="text" placeholder="Field Label">
 					</div>
 					<div>
 						<label for="field_name_input">Field Name</label>
+						<span class="help-tip">?</span>
 						<input id="field_name_input" type="text" placeholder="Field Name">
 					</div>
 					<div>
-						<button>Field Type</button>
-					</div>
-					<div>
-						<button>Move Field to Editor</button>
+						<label for="field_name_input">Field Type</label>
+						<span class="help-tip">?</span>
+						<button class="field-type-button">Select</button>
 					</div>
 					<div>
 						<Label>Field Width</Label>
+						<span class="help-tip">?</span>
 						<div class="button-group">
 							<button>25%</button>
 							<button>50%</button>
@@ -608,19 +610,38 @@
 					</div>
 					<div>
 						<label>Help Text</label>
+						<span class="help-tip">?</span>
 						<textarea rows="4"></textarea>
 					</div>
 					<div>
+						<label>Choices</label>
+						<span class="help-tip">?</span>
+						<textarea rows="4"></textarea>
+						<p class="help-text">
+							<span>Enter each choice on a new line. To specify the value and label separately, use this format:</span>
+							</br>
+							<span>foo : Foo</span>
+							</br>
+							<span>bar : Bar</span>
+						</p>
+					</div>
+					<div>
 						<label>Default Value</label>
+						<span class="help-tip">?</span>
 						<textarea rows="4"></textarea>
 					</div>
 					<div>
 						<label>Placeholder</label>
+						<span class="help-tip">?</span>
 						<textarea rows="4"></textarea>
 					</div>
 					<div>
 						<label>Character Limit</label>
+						<span class="help-tip">?</span>
 						<input type="number">
+					</div>
+					<div>
+						<button class="move-location-button">Move Field to Editor</button>
 					</div>
 					<div>
 						<button class="delete-field-button">Delete Field</button>
