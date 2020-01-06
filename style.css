@@ -78,12 +78,6 @@ body {
     position: relative;
 }
 
-.side {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    border-left: 1px solid #e2e4e7;
-}
-
 .fields-location-tab {
     position: absolute;
     font-size: 13px;
@@ -349,4 +343,79 @@ body {
 .add-field-container button:hover {
     cursor: pointer;
     filter: brightness( 0.8 );
+}
+
+/* Sidebar / Field Settings */
+
+.side {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    border-left: 1px solid #e2e4e7;
+}
+
+.side>div {
+    padding-top: 8px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+}
+.side label {
+    font-size: 13px;
+    font-weight: 400;
+}
+.side input[type="text"],
+.side input[type="number"],
+.side textarea {
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid rgb(126, 137, 147);
+    padding: 6px 8px;
+    font-size: 13px;
+    margin-top: 4px;
+    width: 100%;
+}
+
+.side textarea {
+   
+}
+
+.button-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgb(126, 137, 147);
+    border-radius: 4px;
+    margin-top: 4px;
+    overflow: hidden;
+}
+
+.button-group button {
+    width: 25%;
+    height: 30px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgb(126, 137, 147);
+}
+
+.button-group button:hover {
+    cursor: pointer;
+}
+
+.button-group button:first-of-type {
+    border-left: none;
+}
+
+.delete-field-button {
+    font-size: 13px;
+    width: 100%;
+    color: #b52727;
+    border-color: #b52727;
+    background-color: rgb(243, 245, 246);
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    justify-content: center;
+    height: 28px;
 }
