@@ -1,0 +1,295 @@
+<html>
+    <head>
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="h-screen flex flex-col items-center text-black">
+        <div class="flex items-center h-16 border-b border-gray-300 w-full">
+            <a class="flex items-center justify-center h-full w-16 bg-gray-900" href="#">
+                <svg class="h-10 w-10 fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" role="img" aria-hidden="true" focusable="false"><path d="M20 10c0-5.51-4.49-10-10-10C4.48 0 0 4.49 0 10c0 5.52 4.48 10 10 10 5.51 0 10-4.48 10-10zM7.78 15.37L4.37 6.22c.55-.02 1.17-.08 1.17-.08.5-.06.44-1.13-.06-1.11 0 0-1.45.11-2.37.11-.18 0-.37 0-.58-.01C4.12 2.69 6.87 1.11 10 1.11c2.33 0 4.45.87 6.05 2.34-.68-.11-1.65.39-1.65 1.58 0 .74.45 1.36.9 2.1.35.61.55 1.36.55 2.46 0 1.49-1.4 5-1.4 5l-3.03-8.37c.54-.02.82-.17.82-.17.5-.05.44-1.25-.06-1.22 0 0-1.44.12-2.38.12-.87 0-2.33-.12-2.33-.12-.5-.03-.56 1.2-.06 1.22l.92.08 1.26 3.41zM17.41 10c.24-.64.74-1.87.43-4.25.7 1.29 1.05 2.71 1.05 4.25 0 3.29-1.73 6.24-4.4 7.78.97-2.59 1.94-5.2 2.92-7.78zM6.1 18.09C3.12 16.65 1.11 13.53 1.11 10c0-1.3.23-2.48.72-3.59C3.25 10.3 4.67 14.2 6.1 18.09zm4.03-6.63l2.58 6.98c-.86.29-1.76.45-2.71.45-.79 0-1.57-.11-2.29-.33.81-2.38 1.62-4.74 2.42-7.1z"></path></svg>
+            </a>
+            <a href="index.html"  class="flex items-center h-12 px-4 text-sm">
+                <span>Builder</span>
+            </a>
+            <a href="editor-preview.html"  class="flex items-center h-12 px-4 text-sm">
+                <span class="font-semibold"s>Editor Preview</span>
+            </a>
+            <a href="#" class="flex items-center h-12 px-4 text-sm">
+                <span>Frontend Preview</span>
+            </a>
+            <button class="flex items-center h-8 px-3 bg-transparent rounded-sm ml-auto text-sm mr-2">
+                Save Draft
+            </button>
+            <button class="flex items-center h-8 px-3 bg-blue-700 text-white rounded-sm text-sm mr-6">
+                Publish
+            </button>
+        </div>
+        <div class="flex w-full h-0 flex-grow">
+            <div class="flex flex-col flex-grow items-start w-full overflow-scroll">
+                <div class="flex flex-col w-full max-w-2xl mx-auto pb-64">
+                    <input class="block-title-field w-full font-bold mt-10 text-center focus:outline-none" type="text" placeholder="Add title" value="Hero Block Preview">
+                    
+                    <textarea class="text-lg font-light text-gray-800 mt-4 focus:outline-none resize-none" name="" id="" cols="30" rows="3">This preview experience gives you an exact idea of what your custom block will look like in the block editor. You can interact with this environment here just as if you were creating a new post or page.</textarea>
+                    <div class="grid grid-cols-4 gap-4 w-full items-start mt-8 p-4 pt-6 border border-gray-400 rounded-sm">
+                        <div class="flex items-center col-span-4">
+                            <svg class="w-6 h-6" width="100%" height="100%" viewBox="0 0 91 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="bl_genesis_icon"><path d="M43.31,39.843c0.288,0.81 0.687,1.495 1.196,2.053c0.508,0.558 1.111,0.984 1.809,1.276c0.698,0.293 1.46,0.439 2.288,0.439c0.631,0 1.189,-0.055 1.675,-0.163c0.487,-0.108 0.945,-0.252 1.377,-0.432l0,-2.984l-1.944,0c-0.288,0 -0.513,-0.076 -0.675,-0.229c-0.162,-0.153 -0.243,-0.346 -0.243,-0.581l0,-2.512l6.994,0l0,8.306c-0.504,0.369 -1.028,0.686 -1.572,0.95c-0.545,0.267 -1.126,0.485 -1.742,0.656c-0.617,0.171 -1.275,0.297 -1.972,0.379c-0.698,0.081 -1.447,0.12 -2.249,0.12c-1.44,0 -2.772,-0.253 -3.997,-0.762c-1.224,-0.509 -2.284,-1.211 -3.179,-2.107c-0.896,-0.895 -1.599,-1.958 -2.107,-3.186c-0.509,-1.229 -0.763,-2.564 -0.763,-4.005c0,-1.466 0.243,-2.816 0.729,-4.045c0.486,-1.228 1.182,-2.288 2.087,-3.179c0.904,-0.892 1.998,-1.585 3.281,-2.079c1.283,-0.496 2.716,-0.744 4.3,-0.744c0.82,0 1.589,0.069 2.31,0.203c0.72,0.135 1.384,0.32 1.992,0.554c0.608,0.234 1.163,0.513 1.668,0.837c0.503,0.324 0.953,0.675 1.35,1.052l-1.324,2.013c-0.126,0.189 -0.276,0.338 -0.452,0.446c-0.175,0.108 -0.367,0.162 -0.574,0.162c-0.27,0 -0.549,-0.09 -0.837,-0.27c-0.36,-0.216 -0.7,-0.403 -1.019,-0.561c-0.32,-0.158 -0.647,-0.285 -0.98,-0.384c-0.333,-0.099 -0.684,-0.171 -1.053,-0.216c-0.369,-0.046 -0.783,-0.068 -1.243,-0.068c-0.855,0 -1.625,0.151 -2.308,0.453c-0.685,0.3 -1.267,0.727 -1.749,1.275c-0.483,0.55 -0.853,1.209 -1.115,1.978c-0.261,0.77 -0.391,1.628 -0.391,2.573c0,1.045 0.144,1.972 0.432,2.782Zm42.005,0.944c-0.658,1.855 -1.461,3.536 -2.437,4.951c0.979,-3.651 1.411,-7.51 1.208,-11.481c-1.438,-19.116 -17.393,-34.183 -36.878,-34.183c-12.247,0 -23.093,5.958 -29.826,15.127c-0.386,0.552 -0.769,1.11 -1.129,1.69c-2.23,3.589 -3.761,7.411 -4.65,11.311c-0.128,-3.334 0.369,-6.946 1.446,-10.724c-3.39,0.467 -6.246,1.301 -8.413,2.492c0.001,0 0.002,0.001 0.003,0.001c-1.918,1.056 -3.3,2.391 -4.03,4.003c-0.002,0.005 -0.005,0.01 -0.008,0.015c-0.103,0.231 -0.194,0.468 -0.271,0.71c-0.092,0.292 -0.163,0.59 -0.214,0.89c-0.015,0.089 -0.017,0.182 -0.029,0.272c-0.027,0.214 -0.055,0.427 -0.063,0.646c-0.002,0.102 0.007,0.208 0.008,0.311c0.001,0.21 0.001,0.419 0.021,0.632c0.01,0.104 0.032,0.209 0.045,0.313c0.029,0.217 0.057,0.434 0.103,0.655c0.02,0.099 0.053,0.201 0.077,0.301c0.056,0.228 0.113,0.457 0.187,0.688c0.03,0.093 0.069,0.188 0.102,0.281c0.085,0.242 0.173,0.485 0.277,0.73c0.036,0.084 0.08,0.17 0.118,0.254c0.117,0.258 0.237,0.515 0.375,0.775c0.039,0.074 0.084,0.15 0.125,0.224c0.149,0.273 0.306,0.547 0.478,0.821c0.04,0.064 0.084,0.128 0.124,0.191c0.186,0.289 0.379,0.578 0.588,0.87c0.038,0.052 0.079,0.105 0.117,0.157c0.223,0.305 0.455,0.609 0.702,0.914c0.034,0.042 0.069,0.082 0.103,0.124c0.26,0.318 0.532,0.637 0.82,0.957c0.027,0.03 0.056,0.061 0.083,0.091c0.301,0.332 0.613,0.664 0.941,0.996c0.02,0.021 0.04,0.041 0.06,0.06c0.339,0.344 0.692,0.687 1.061,1.031c0.012,0.011 0.025,0.023 0.037,0.034c0.378,0.352 0.77,0.704 1.178,1.057c0.004,0.005 0.01,0.008 0.016,0.014c0.414,0.358 0.843,0.715 1.286,1.073c0.001,0.001 0.001,0.002 0.002,0.003c0.447,0.359 0.909,0.717 1.384,1.076c7.15,5.394 17.488,10.59 29.489,14.386c2.195,0.695 4.369,1.315 6.515,1.87c-13.418,-1.826 -24.644,-4.124 -34.98,-10.802c4.203,15.814 18.606,27.468 35.742,27.468c12.033,0 22.719,-5.747 29.475,-14.642c6.999,-0.911 11.792,-3.35 13.03,-7.263c1.059,-3.348 -0.634,-7.309 -4.398,-11.37Z"/></g></svg>
+                            <span class="text-xl ml-4">Hero Block</span>
+                        </div>
+                        <!-- Field Start  -->
+                        <div class="flex flex-col col-span-4 mt-2">
+                            <label class="text-sm font-semibold" for="">Hero Heading</label>
+                            <input class="w-full h-10 border border-black rounded-sm mt-3 px-2 text-sm" type="text" placeholder="This is some placeholder text...">
+                            <span class="text-xs italic mt-1">Here is some help text.</span>
+                        </div>
+                        <!-- Field End  -->
+                        <!-- Field Start  -->
+                        <div class="flex flex-col col-span-2 mt-2">
+                            <label class="text-sm font-semibold" for="">Sub Heading</label>
+                            <input class="w-full h-10 border border-black rounded-sm mt-3 px-2 text-sm" type="text" placeholder="This is some placeholder text...">
+                            <span class="text-xs italic mt-1">Here is some help text.</span>
+                        </div>
+                        <!-- Field End  -->
+                        <!-- Field Start  -->
+                        <div class="flex flex-col col-span-2 mt-2">
+                            <label class="text-sm font-semibold" for="">Text</label>
+                            <textarea class="w-full border border-black rounded-sm mt-3 p-2 text-sm" name="" id="" cols="30" rows="5" placeholder="This is some placeholder text..."></textarea>
+                            <!-- <input  type="text" placeholder="This is some placeholder text..."> -->
+                            <span class="text-xs italic mt-1">Here is some help text.</span>
+                        </div>
+                        <!-- Field End  -->
+                        <!-- Field Start  -->
+                        <div class="flex flex-col col-span-1 mt-2">
+                            <label class="text-sm font-semibold" for="">Docs URL</label>
+                            <input class="w-full h-10 border border-black rounded-sm mt-3 px-2 text-sm" type="text" placeholder="This is some placeholder text...">
+                            <span class="text-xs italic mt-1">Here is some help text.</span>
+                        </div>
+                        <!-- Field End  -->
+                        <!-- Field Start  -->
+                        <div class="flex flex-col col-span-3 mt-2">
+                            <label class="text-sm font-semibold" for="">Docs Text</label>
+                            <input class="w-full h-10 border border-black rounded-sm mt-3 px-2 text-sm" type="text" placeholder="This is some placeholder text...">
+                            <span class="text-xs italic mt-1">Here is some help text.</span>
+                        </div>
+                        <!-- Field End  -->
+                        <!-- Field Start  -->
+                        <div class="flex flex-col col-span-4 mt-2">
+                            <!-- <label class="text-sm font-semibold" for="">Background Image</label> -->
+                            <div class="w-full border border-black rounded-sm px-4 py-8">
+                                <div class="flex items-center">
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z"/></svg>
+                                    <label class="text-sm font-semibold ml-2 leading-none" for="">Background Image</label>
+                                </div>
+                                <p class="text-xs mt-5">Drag an image, upload a new one or select a file from your library.</p>
+                                <div class="flex mt-3">
+                                    <button class="h-8 px-2 bg-blue-600 rounded-sm text-blue-100 text-xs hover:bg-blue-700">Upload</button>
+                                    <button class="h-8 px-2 bg-transparent border border-transparent rounded-sm text-blue-700 text-xs hover:border-blue-700 ml-2">Media Library</button>
+                                </div>
+                            </div>
+                            <span class="text-xs italic mt-1">Here is some help text.</span>
+                        </div>
+                        <!-- Field End  -->
+                        <!-- Field Start  -->
+                        <div class="flex flex-col col-span-4 mt-2">
+                            <label class="text-sm font-semibold" for="">Border Color</label>
+                            <div class="flex items-center">
+                                <input class="w-full h-10 border border-black rounded-sm mt-3 px-2 text-sm" type="text" placeholder="Select a color" value="#f4f4f4">
+                                <div style="background-image: url('color_input_bg.svg');" class="h-10 w-10 rounded-full border border-black mt-3 ml-4 cursor-pointer flex-shrink-0 bg-cover"></div>
+                            </div>
+                            <span class="text-xs italic mt-1">Here is some help text.</span>
+                        </div>
+                        <!-- Field Start  -->
+                        <div class="flex flex-col col-span-4 mt-2">
+                            <label class="text-sm font-semibold" for="">Checkbox</label>
+                            <div class="flex justify-start items-center mt-3">
+                                <input id="checkbox" class="h-5 w-5 border border-black rounded-sm" type="checkbox" placeholder="This is some placeholder text...">
+                                <label for="checkbox" class="ml-3 text-sm">The label</label>
+                            </div>
+                            <span class="text-xs italic mt-2">Here is some help text.</span>
+                        </div>
+                        <!-- Field End  -->
+                        <!-- Field Start  -->
+                        <div class="flex flex-col col-span-4 mt-2">
+                            <label class="text-sm font-semibold" for="">Radio</label>
+                            <div class="flex justify-start items-center mt-3">
+                                <input id="radio1" name="radio" class="h-5 w-5 border border-black rounded-sm" type="radio" placeholder="This is some placeholder text...">
+                                <label for="radio1" class="ml-3 text-sm">The label</label>
+                            </div>
+                            <div class="flex justify-start items-center mt-3">
+                                <input id="radio2" name="radio" class="h-5 w-5 border border-black rounded-sm" type="radio" placeholder="This is some placeholder text...">
+                                <label for="radio2" class="ml-3 text-sm">The label</label>
+                            </div>
+                            <div class="flex justify-start items-center mt-3">
+                                <input id="radio3" name="radio" class="h-5 w-5 border border-black rounded-sm" type="radio" placeholder="This is some placeholder text...">
+                                <label for="radio3" class="ml-3 text-sm">The label</label>
+                            </div>
+                            <span class="text-xs italic mt-2">Here is some help text.</span>
+                        </div>
+                        <!-- Field End  -->
+                        <!-- Field Start  -->
+                        <div class="flex flex-col col-span-4 mt-2">
+                            <label class="text-sm font-semibold" for="">Toggle</label>
+                            <div class="flex justify-start items-center mt-3">
+                                <input id="toggle" class="toggle-field relative h-5 w-10 border border-black rounded-full appearance-none cursor-pointer focus:outline-none" type="checkbox" placeholder="This is some placeholder text...">
+                                <label for="toggle" class="ml-3 text-sm">The label</label>
+                            </div>
+                            <span class="text-xs italic mt-2">Here is some help text.</span>
+                        </div>
+                        <!-- Field End  -->
+                        <!-- Field Start  -->
+                        <div class="flex flex-col col-span-4 mt-2">
+                            <label class="text-sm font-semibold" for="">Range Field</label>
+                            <div class="flex items-center w-full">
+                                <input class="range-field w-full mt-3 mb-2 appearance-none focus:outline-none" type="range" min="0" max="50" value="10">
+                                <input class="w-16 h-10 border border-black rounded-sm px-2 text-sm ml-3" type="number" name="" id="" value="10">
+                            </div>
+                            <span class="text-xs italic mt-1">Here is some help text.</span>
+                        </div>
+                        <!-- Field End  -->
+                        <!-- Repeater Field Start  -->
+                        <div class="flex flex-col col-span-4 mt-2">
+                            <label class="text-sm font-semibold" for="">Buttons</label>
+
+                            <!-- Row 1 Start  -->
+                            <div class="repeater-row relative grid grid-cols-4 gap-4 border border-black p-4 pt-2 mt-3 rounded-sm">
+                                <div class="repeater-row__delete-duplicate absolute flex flex-col justify-between top-0 right-0 bottom-0 -mr-3 -mt-1 -mb-1">
+                                    <button class="flex items-center justify-center text-sm w-6 h-6 rounded-full bg-white border border-black hover:bg-red-600 hover:border-red-700 hover:text-red-100">
+                                        <svg class="h-4 w-4 fill-current" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>                                    </button>
+                                    <button class="flex items-center justify-center text-sm w-6 h-6 rounded-full bg-white border border-black hover:bg-blue-600 hover:border-blue-700 hover:text-blue-100">
+                                        <svg class="h-4 w-4 fill-current" fill="currentColor" viewBox="0 0 20 20"><path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z"></path><path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z"></path></svg>
+                                    </button>
+                                </div>
+                                <div class="repeater-row__move absolute flex flex-col justify-between top-0 left-0 -ml-8 mt-0 rounded-sm bg-white border border-black">
+                                    <button class="flex items-center justify-center text-sm w-6 h-5 hover:text-blue-700 z-10">
+                                        <svg class="h-4 w-4 stroke-current" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 15l7-7 7 7"></path></svg>
+                                    <button class="flex items-center justify-center text-sm w-6 h-5 hover:text-blue-700 z-10">
+                                        <svg class="h-4 w-4 stroke-current" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M19 9l-7 7-7-7"></path></svg>
+                                    </button>
+                                </div>
+                                <!-- Field Start  -->
+                                <div class="col-span-2 flex flex-col mt-2">
+                                    <label class="text-sm font-semibold" for="">Button Text</label>
+                                    <input class="w-full h-10 border border-black rounded-sm mt-3 px-2 text-sm" type="text" placeholder="This is some placeholder text...">
+                                    <span class="text-xs italic mt-1">Here is some help text.</span>
+                                </div>
+                                <!-- Field End  -->
+                                <div class="col-span-2 flex flex-col mt-2">
+                                    <label class="text-sm font-semibold" for="">Button URL</label>
+                                    <input class="w-full h-10 border border-black rounded-sm mt-3 px-2 text-sm" type="text" placeholder="This is some placeholder text...">
+                                    <span class="text-xs italic mt-1">Here is some help text.</span>
+                                </div>
+                                <!-- Field End  -->
+                            </div>
+                            <!-- Row 1 End  -->
+
+                            <!-- Insert Row Start -->
+                            <div class="repeater-insert-row relative flex items-center justify-center h-5 z-10">
+                                <button class="absolute flex items-center justify-center h-6 w-6 border bg-white border-black rounded-sm text-black hover:bg-black hover:text-white focus:outline-none">
+                                    <svg class="w-4 h-4 fill-current" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                                </button>
+                            </div>
+                            <!-- Insert Row End  -->
+
+                            <!-- Row 2 Start  -->
+                            <div class="repeater-row relative grid grid-cols-4 gap-4 border border-black p-4 pt-2 mt-3 rounded-sm">
+                                <div class="repeater-row__delete-duplicate absolute flex flex-col justify-between top-0 right-0 bottom-0 -mr-3 -mt-1 -mb-1">
+                                    <button class="flex items-center justify-center text-sm w-6 h-6 rounded-full bg-white border border-black hover:bg-red-600 hover:border-red-700 hover:text-red-100">
+                                        <svg class="h-4 w-4 fill-current" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>                                    </button>
+                                    <button class="flex items-center justify-center text-sm w-6 h-6 rounded-full bg-white border border-black hover:bg-blue-600 hover:border-blue-700 hover:text-blue-100">
+                                        <svg class="h-4 w-4 fill-current" fill="currentColor" viewBox="0 0 20 20"><path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z"></path><path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z"></path></svg>
+                                    </button>
+                                </div>
+                                <div class="repeater-row__move absolute flex flex-col justify-between top-0 left-0 -ml-8 mt-0 rounded-sm bg-white border border-black">
+                                    <button class="flex items-center justify-center text-sm w-6 h-5 hover:text-blue-700 z-10">
+                                        <svg class="h-4 w-4 stroke-current" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 15l7-7 7 7"></path></svg>
+                                    <button class="flex items-center justify-center text-sm w-6 h-5 hover:text-blue-700 z-10">
+                                        <svg class="h-4 w-4 stroke-current" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M19 9l-7 7-7-7"></path></svg>
+                                    </button>
+                                </div>
+                                <!-- Field Start  -->
+                                <div class="col-span-2 flex flex-col mt-2">
+                                    <label class="text-sm font-semibold" for="">Button Text</label>
+                                    <input class="w-full h-10 border border-black rounded-sm mt-3 px-2 text-sm" type="text" placeholder="This is some placeholder text...">
+                                    <span class="text-xs italic mt-1">Here is some help text.</span>
+                                </div>
+                                <!-- Field End  -->
+                                <div class="col-span-2 flex flex-col mt-2">
+                                    <label class="text-sm font-semibold" for="">Button URL</label>
+                                    <input class="w-full h-10 border border-black rounded-sm mt-3 px-2 text-sm" type="text" placeholder="This is some placeholder text...">
+                                    <span class="text-xs italic mt-1">Here is some help text.</span>
+                                </div>
+                                <!-- Field End  -->
+                            </div>
+                            <!-- Row 2 End  -->
+                            <button class="flex items-center justify-center h-6 w-6 border border-black rounded-sm text-black mt-4 ml-auto hover:bg-black hover:text-white focus:outline-none">
+                                <svg class="w-4 h-4 fill-current" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                            </button>
+                        </div>
+                        <!-- Repeater Field End  -->
+                        
+                    </div>
+                    <button class="flex items-center justify-center h-6 w-6 bg-black rounded-sm text-white mt-4 ml-auto">
+                        <svg class="w-4 h-4 fill-current" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="inspector flex-shrink-0 flex flex-col border-l border-gray-300 overflow-scroll">
+                <div class="flex w-full border-b border-gray-300">
+                    <button class="flex items-center h-12 px-5 text-sm focus:outline-none">Document</button>
+                    <button class="flex items-center h-12 px-5 text-sm font-semibold border-b-4 border-blue-600 focus:outline-none">Block</button>
+                </div>
+                <div class="p-4">
+                    <h4 class="text-sm font-semibold">Field Settings</h4>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Field Label</label>
+                        <input class="flex items-center w-full h-8 rounded-sm border border-gray-600 mt-2 px-2 text-sm" type="text">
+                        <span class="block italic text-xs mt-1">A label or a title for this field.</span>
+                    </div>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Field Name (slug)</label>
+                        <input class="flex items-center w-full h-8 rounded-sm border border-gray-600 mt-2 px-2 text-sm font-mono" type="text">
+                        <span class="block italic text-xs mt-1">Single word, no spaces.</span>
+                    </div>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Field Type</label>
+                        <select class="flex items-center w-full h-8 rounded-sm border border-gray-600 mt-2 px-2 text-sm" name="" id="">
+                            <option value="">Text Field</option>
+                            <option value="">Number Field</option>
+                            <option value="">URL Field</option>
+                            <option value="">Color Field</option>
+                            <option value="">Select Field</option>
+                        </select>
+                    </div>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Field Width</label>
+                        <div class="flex w-full border border-gray-600 rounded-sm mt-2">
+                            <button class="w-0 flex-grow h-8 rounded-sm text-sm focus:outline-none">25%</button>
+                            <button class="w-0 flex-grow h-8 border-l border-gray-600 text-sm focus:outline-none">50%</button>
+                            <button class="w-0 flex-grow h-8 border-l border-gray-600 text-sm focus:outline-none">75%</button>
+                            <button class="w-0 flex-grow h-8 border-l border-gray-600 text-sm focus:outline-none">100%</button>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Help Text</label>
+                        <input class="flex items-center w-full h-8 rounded-sm border border-gray-600 mt-2 px-2 text-sm" type="text">
+                    </div>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Default Value</label>
+                        <input class="flex items-center w-full h-8 rounded-sm border border-gray-600 mt-2 px-2 text-sm" type="text">
+                    </div>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Placeholder Text</label>
+                        <input class="flex items-center w-full h-8 rounded-sm border border-gray-600 mt-2 px-2 text-sm" type="text">
+                    </div>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Character Limit</label>
+                        <input class="flex items-center w-full h-8 rounded-sm border border-gray-600 mt-2 px-2 text-sm" type="number">
+                    </div>
+                    <div class="flex justify-between mt-5 border-t border-gray-300 pt-3">
+                        <button class="flex items-center bg-red-200 text-sm h-6 px-2 rounded-sm leading-none text-red-700 hover:bg-red-500 hover:text-red-100">Delete</button>
+                        <button class="flex items-center bg-blue-200 text-sm h-6 px-2 rounded-sm leading-none text-blue-700 hover:bg-blue-500 hover:text-blue-100">Duplicate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

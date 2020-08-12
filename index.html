@@ -1,582 +1,278 @@
 <html>
-	<head>
-		<title>Block Builder UI Experiment</title>
-		<link rel="stylesheet" href="style.css" />
-		<script>
-			function dragStart( element, event ) {
-				if ( event.target !== element ) {
-					return
-				}
-
-				const clone = element.cloneNode( true );
-
-				clone.style.position = 'absolute';
-				clone.style.top = '-999px';
-				clone.style.width = element.offsetWidth;
-				clone.classList.add('clone');
-				clone.querySelector( '.field-selector' ).removeAttribute( 'checked' );
-
-				element.classList.add( 'dragging' );
-
-				document.body.appendChild( clone );
-				event.dataTransfer.setDragImage( clone, 0, 0 );
-			}
-
-			function dragEnd( element ) {
-				element.setAttribute( 'draggable', 'false' );
-				element.classList.remove( 'dragging' );
-				const clones = document.getElementsByClassName( 'clone' );
-				for ( const clone of clones ) {
-					document.body.removeChild( clone );
-				}
-			}
-		</script>
-	</head>
-	<body>
-		<div class="wp-admin">
-			<div class="wp-side-bar">
-
-			</div>
-			<div class="block-builder">
-				<div class="header">
-					<div class="header-nav">
-						<a class="header-nav-item header-nav-item--active" href="#">Builder</a>
-						<a class="header-nav-item" href="#">Editor Preview</a>
-					</div>
-				</div>
-				<div class="main">
-
-					<!-- Editor Tab -->
-					<input type="radio" id="field-location--editor" class="fields-location-toggle" checked="checked" name="fields-location-toggle">
-					<label class="fields-location-tab" for="field-location--editor">Editor Fields</label>
-
-					<!-- Editor Fields -->
-					<div class="fields fields--editor">
-
-						<!-- New Field -->
-						<label class="field" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Heading
-								</span>
-								<div class="field-copy-pill">
-									<span>heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- New Field -->
-						<label class="field field--1/2" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector" checked="checked">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Heading
-								</span>
-								<div class="field-copy-pill">
-									<span>heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- New Field -->
-						<label class="field field--1/2" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Heading
-								</span>
-								<div class="field-copy-pill">
-									<span>heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- New Field -->
-						<label class="field" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Sub Heading
-								</span>
-								<div class="field-copy-pill">
-									<span>sub-heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- New Field -->
-						<label class="field field--1/4" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Sub Heading
-								</span>
-								<div class="field-copy-pill">
-									<span>sub-heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- New Field -->
-						<label class="field field--3/4" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Sub Heading
-								</span>
-								<div class="field-copy-pill">
-									<span>sub-heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- New Field -->
-						<label class="field field--1/2" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Sub Heading
-								</span>
-								<div class="field-copy-pill">
-									<span>sub-heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- New Field -->
-						<label class="field" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Repeater
-								</span>
-								<div class="field-copy-pill">
-									<span>sub-heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-								<div class="sub-fields">
-									<!-- New Sub-Field -->
-									<label class="field sub-field" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)" onmouseenter="this.parentElement.parentElement.classList.add('child-hover')" onmouseleave="this.parentElement.parentElement.classList.remove('child-hover')">
-										<input type="radio" name="field-selector" class="field-selector">
-										<div class="field-container">
-											<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-												<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-													<path fill="none" d="M0 0h24v24H0V0z"/>
-													<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-												</svg>
-												<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-													<path fill="none" d="M0 0h24v24H0V0z"/>
-													<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-												</svg>
-											</div>
-											<span class="field-title">
-												Sub Heading
-											</span>
-											<div class="field-copy-pill">
-												<span>sub-heading</span>
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-													<path fill="none" d="M0 0h24v24H0V0z"/>
-													<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-												</svg>
-											</div>
-										</div>
-									</label>
-									<!-- End of Sub-Field -->
-
-									<!-- New Sub-Field -->
-									<label class="field sub-field" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)" onmouseenter="this.parentElement.parentElement.classList.add('child-hover')" onmouseleave="this.parentElement.parentElement.classList.remove('child-hover')">
-										<input type="radio" name="field-selector" class="field-selector">
-										<div class="field-container">
-											<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-												<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-													<path fill="none" d="M0 0h24v24H0V0z"/>
-													<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-												</svg>
-												<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-													<path fill="none" d="M0 0h24v24H0V0z"/>
-													<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-												</svg>
-											</div>
-											<span class="field-title">
-												Sub Heading
-											</span>
-											<div class="field-copy-pill">
-												<span>sub-heading</span>
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-													<path fill="none" d="M0 0h24v24H0V0z"/>
-													<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-												</svg>
-											</div>
-										</div>
-									</label>
-									<!-- End of Sub-Field -->
-
-									<!-- Add Field Button -->
-									<div class="add-field-container">
-										<button>
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-												<path fill="none" d="M0 0h24v24H0V0z"/>
-												<path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-											</svg>
-											Add Sub Field
-										</button>
-									</div>
-
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- Add Field Button -->
-						<div class="add-field-container">
-							<button>
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-									<path fill="none" d="M0 0h24v24H0V0z"/>
-									<path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-								</svg>
-								Add Field
-							</button>
-						</div>
-
-					</div>
-
-					<!-- Insepctor Tab -->
-					<input type="radio" id="field-location--inspector" class="fields-location-toggle" name="fields-location-toggle">
-					<label class="fields-location-tab" for="field-location--inspector">Inspector Fields</label>
-
-					<!-- Insepctor Fields -->
-					<div class="fields fields--inspector">
-
-						<!-- New Field -->
-						<label class="field" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Heading
-								</span>
-								<div class="field-copy-pill">
-									<span>heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- New Field -->
-						<label class="field field--1/2" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector" checked="checked">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Heading
-								</span>
-								<div class="field-copy-pill">
-									<span>heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- New Field -->
-						<label class="field field--1/2" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Heading
-								</span>
-								<div class="field-copy-pill">
-									<span>heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- New Field -->
-						<label class="field" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Sub Heading
-								</span>
-								<div class="field-copy-pill">
-									<span>sub-heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- New Field -->
-						<label class="field field--1/4" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Sub Heading
-								</span>
-								<div class="field-copy-pill">
-									<span>sub-heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- New Field -->
-						<label class="field field--3/4" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Sub Heading
-								</span>
-								<div class="field-copy-pill">
-									<span>sub-heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- New Field -->
-						<label class="field field--1/2" ondragstart="dragStart(this, event)" ondragend="dragEnd(this)">
-							<input type="radio" name="field-selector" class="field-selector">
-							<div class="field-container">
-								<div class="field-icon-container" onmousedown="this.parentElement.parentElement.setAttribute('draggable', 'true')">
-									<svg class="field-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M21 3H3C2 3 1 4 1 5v14c0 1.1.9 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 15.92c-.02.03-.06.06-.08.08H3V5.08L3.08 5h17.83c.03.02.06.06.08.08v13.84zm-10-3.41L8.5 12.5 5 17h14l-4.5-6z"/>
-									</svg>
-									<svg class="field-grab-indicator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-									</svg>
-								</div>
-								<span class="field-title">
-									Sub Heading
-								</span>
-								<div class="field-copy-pill">
-									<span>sub-heading</span>
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<path fill="none" d="M0 0h24v24H0V0z"/>
-										<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4H8c-1.1 0-1.99.9-1.99 2L6 21c0 1.1.89 2 1.99 2H19c1.1 0 2-.9 2-2V11l-6-6zM8 21V7h6v5h5v9H8z"/>
-									</svg>
-								</div>
-							</div>
-						</label>
-						<!-- End of Field -->
-
-						<!-- Add Field Button -->
-						<div class="add-field-container">
-							<button>
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-									<path fill="none" d="M0 0h24v24H0V0z"/>
-									<path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-								</svg>
-								Add Field
-							</button>
-						</div>
-
-					</div>
-				</div>
-				<div class="side"></div>
-			</div>
-		</div>
-	</body>
+    <head>
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="h-screen flex flex-col items-center text-black">
+        <div class="flex items-center h-16 border-b border-gray-300 w-full">
+            <a class="flex items-center justify-center h-full w-16 bg-gray-900" href="#">
+                <svg class="h-10 w-10 fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" role="img" aria-hidden="true" focusable="false"><path d="M20 10c0-5.51-4.49-10-10-10C4.48 0 0 4.49 0 10c0 5.52 4.48 10 10 10 5.51 0 10-4.48 10-10zM7.78 15.37L4.37 6.22c.55-.02 1.17-.08 1.17-.08.5-.06.44-1.13-.06-1.11 0 0-1.45.11-2.37.11-.18 0-.37 0-.58-.01C4.12 2.69 6.87 1.11 10 1.11c2.33 0 4.45.87 6.05 2.34-.68-.11-1.65.39-1.65 1.58 0 .74.45 1.36.9 2.1.35.61.55 1.36.55 2.46 0 1.49-1.4 5-1.4 5l-3.03-8.37c.54-.02.82-.17.82-.17.5-.05.44-1.25-.06-1.22 0 0-1.44.12-2.38.12-.87 0-2.33-.12-2.33-.12-.5-.03-.56 1.2-.06 1.22l.92.08 1.26 3.41zM17.41 10c.24-.64.74-1.87.43-4.25.7 1.29 1.05 2.71 1.05 4.25 0 3.29-1.73 6.24-4.4 7.78.97-2.59 1.94-5.2 2.92-7.78zM6.1 18.09C3.12 16.65 1.11 13.53 1.11 10c0-1.3.23-2.48.72-3.59C3.25 10.3 4.67 14.2 6.1 18.09zm4.03-6.63l2.58 6.98c-.86.29-1.76.45-2.71.45-.79 0-1.57-.11-2.29-.33.81-2.38 1.62-4.74 2.42-7.1z"></path></svg>
+            </a>
+            <a href="index.html"  class="flex items-center h-12 px-4 text-sm">
+                <span class="font-semibold">Builder</span>
+            </a>
+            <a href="editor-preview.html"  class="flex items-center h-12 px-4 text-sm">
+                <span>Editor Preview</span>
+            </a>
+            <a href="#" class="flex items-center h-12 px-4 text-sm">
+                <span>Frontend Preview</span>
+            </a>
+            <button class="flex items-center h-8 px-3 bg-transparent rounded-sm ml-auto text-sm mr-2">
+                Save Draft
+            </button>
+            <button class="flex items-center h-8 px-3 bg-blue-700 text-white rounded-sm text-sm mr-6">
+                Publish
+            </button>
+        </div>
+        <div class="flex w-full h-0 flex-grow">
+            <div class="flex flex-col flex-grow items-start w-full overflow-scroll">
+                <div class="flex flex-col w-full max-w-2xl mx-auto pb-64">
+                    <input class="block-title-field w-full font-bold mt-10 focus:outline-none" type="text" placeholder="Block title">
+                    <div class="mt-4 p-5 bg-blue-100 text-blue-700 border-l-4 border-blue-700 rounded-sm">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 fill-current" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <h4 class="text-lg font-semibold text-blue-900 ml-2">Next step: Build your block template.</h4>
+                        </div>
+                        <p class="text-sm mt-2 ml-2">To display this block, the plugin will look for this template file in your theme:</p>
+                        <p class="w-auto text-xs font-mono mt-2 ml-2 px-2 py-1 bg-blue-200 rounded-sm">/wp-content/themes/twentytwenty-child/blocks/<span class="cursor-pointer bg-transparent border-b border-dashed border-blue-700 hover:bg-blue-300">block-example-block.php</span></p>
+                        <div class="flex items-center mt-5 text-xs text-blue-600">
+                            <svg class="h-4 w-4 fill-current" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path></svg>
+                            <p class="font-semibold ml-1">Learn more:</p>
+                            <a class="underline ml-2" href="#">Block Templates</a>
+                            <a class="underline ml-2" href="#">Template Functions</a>
+                        </div>
+                    </div>
+                    <div class="flex mt-6">
+                        <button class="h-12 px-4 text-sm">
+                            <span class="font-semibold">Editor Fields</span>
+                        </button>
+                        <button class="h-12 px-4 text-sm">
+                            <span>Inspector Fields</span>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4 w-full items-start mt-2">
+                        <!-- Field Start -->
+                        <label draggable="true" class="field w-full col-span-4">
+                            <input class="hidden" type="radio" name="field-selector">
+                            <div class="relative flex items-center w-full p-4 bg-white border border-gray-400 rounded-sm cursor-pointer hover:border-black">
+                                <button class="field-resize w-4 absolute -ml-2 left-0 top-0 bottom-0 focus:outline-none"></button>
+                                <button class="cursor-move">
+                                    <svg class="fill-current h-6 w-6" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M5 17v2h14v-2H5zm4.5-4.2h5l.9 2.2h2.1L12.75 4h-1.5L6.5 15h2.1l.9-2.2zM12 5.98L13.87 11h-3.74L12 5.98z"/></svg>
+                                </button>
+                                <span class=" ml-4 truncate">Hero Heading</span>
+                                <button class="flex items-center h-6 px-2 bg-gray-200 rounded-sm ml-auto hover:bg-gray-400">
+                                    <span class="text-xs font-mono">hero-heading</span>
+                                    <svg class="h-4 w-4 fill-current ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"></path><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"></path></svg>
+                                </button>
+                                <button class="field-resize w-4 absolute -mr-2 right-0 top-0 bottom-0 focus:outline-none"></button>
+                            </div>
+                        </label>
+                        <!-- Field End  -->
+                        <!-- Field Start -->
+                        <label draggable="true" class="field w-full col-span-2">
+                            <input class="hidden" type="radio" name="field-selector">
+                            <div class="relative flex items-center w-full p-4 bg-white border border-gray-400 rounded-sm cursor-pointer hover:border-black">
+                                <button class="field-resize w-4 absolute -ml-2 left-0 top-0 bottom-0 focus:outline-none"></button>
+                                <button class="cursor-move">
+                                    <svg class="fill-current h-6 w-6" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M5 17v2h14v-2H5zm4.5-4.2h5l.9 2.2h2.1L12.75 4h-1.5L6.5 15h2.1l.9-2.2zM12 5.98L13.87 11h-3.74L12 5.98z"/></svg>
+                                </button>
+                                <span class=" ml-4 truncate">Sub Heading</span>
+                                <button class="flex items-center h-6 px-2 bg-gray-200 rounded-sm ml-auto hover:bg-gray-400">
+                                    <span class="text-xs font-mono">sub-heading</span>
+                                    <svg class="h-4 w-4 fill-current ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"></path><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"></path></svg>
+                                </button>
+                                <button class="field-resize w-4 absolute -mr-2 right-0 top-0 bottom-0 focus:outline-none"></button>
+                            </div>
+                        </label>
+                        <!-- Field End  -->
+                        <!-- Field Start -->
+                        <label draggable="true" class="field w-full col-span-2">
+                            <input class="hidden" type="radio" name="field-selector">
+                            <div class="relative flex items-center w-full p-4 bg-white border border-gray-400 rounded-sm cursor-pointer hover:border-black">
+                                <button class="field-resize w-4 absolute -ml-2 left-0 top-0 bottom-0 focus:outline-none"></button>
+                                <button class="cursor-move">
+                                    <svg class="fill-current h-6 w-6" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M5 17v2h14v-2H5zm4.5-4.2h5l.9 2.2h2.1L12.75 4h-1.5L6.5 15h2.1l.9-2.2zM12 5.98L13.87 11h-3.74L12 5.98z"/></svg>
+                                </button>
+                                <span class=" ml-4 truncate">Text</span>
+                                <button class="flex items-center h-6 px-2 bg-gray-200 rounded-sm ml-auto hover:bg-gray-400">
+                                    <span class="text-xs font-mono">text</span>
+                                    <svg class="h-4 w-4 fill-current ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"></path><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"></path></svg>
+                                </button>
+                                <button class="field-resize w-4 absolute -mr-2 right-0 top-0 bottom-0 focus:outline-none"></button>
+                            </div>
+                        </label>
+                        <!-- Field End  -->
+                        <!-- Field Start -->
+                        <label draggable="true" class="field w-full col-span-1">
+                            <input class="hidden" type="radio" name="field-selector">
+                            <div class="relative flex items-center w-full p-4 bg-white border border-gray-400 rounded-sm cursor-pointer hover:border-black">
+                                <button class="field-resize w-4 absolute -ml-2 left-0 top-0 bottom-0 focus:outline-none"></button>
+                                <button class="cursor-move">
+                                    <svg class="fill-current h-6 w-6" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>                                </button>
+                                <span class=" ml-4 truncate">Docs Link</span>
+                                <button class="flex items-center h-6 px-1 bg-gray-200 rounded-sm ml-auto hover:bg-gray-400">
+                                    <svg class="h-4 w-4 fill-current" fill="currentColor" viewBox="0 0 20 20"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"></path><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"></path></svg>
+                                </button>
+                                <button class="field-resize w-4 absolute -mr-2 right-0 top-0 bottom-0 focus:outline-none"></button>
+                            </div>
+                        </label>
+                        <!-- Field End  -->
+                        <!-- Field Start -->
+                        <label draggable="true" class="field w-full col-span-3">
+                            <input class="hidden" type="radio" name="field-selector">
+                            <div class="relative flex items-center w-full p-4 bg-white border border-gray-400 rounded-sm cursor-pointer hover:border-black">
+                                <button class="field-resize w-4 absolute -ml-2 left-0 top-0 bottom-0 focus:outline-none"></button>
+                                <button class="cursor-move">
+                                    <svg class="fill-current h-6 w-6" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M5 17v2h14v-2H5zm4.5-4.2h5l.9 2.2h2.1L12.75 4h-1.5L6.5 15h2.1l.9-2.2zM12 5.98L13.87 11h-3.74L12 5.98z"/></svg>
+                                </button>
+                                <span class=" ml-4 truncate">Docs Text</span>
+                                <button class="flex items-center h-6 px-2 bg-gray-200 rounded-sm ml-auto hover:bg-gray-400">
+                                    <span class="text-xs font-mono">docs-text</span>
+                                    <svg class="h-4 w-4 fill-current ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"></path><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"></path></svg>
+                                </button>
+                                <button class="field-resize w-4 absolute -mr-2 right-0 top-0 bottom-0 focus:outline-none"></button>
+                            </div>
+                        </label>
+                        <!-- Field End  -->
+                        <!-- Field Start -->
+                        <label draggable="true" class="field w-full col-span-4">
+                            <input class="hidden" type="radio" name="field-selector">
+                            <div class="relative flex items-center w-full p-4 bg-white border border-gray-400 rounded-sm cursor-pointer hover:border-black">
+                                <button class="field-resize w-4 absolute -ml-2 left-0 top-0 bottom-0 focus:outline-none"></button>
+                                <button class="cursor-move">
+                                    <svg class="fill-current h-6 w-6" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>                                </button>
+                                <span class=" ml-4 truncate">Background Image</span>
+                                <button class="flex items-center h-6 px-2 bg-gray-200 rounded-sm ml-auto hover:bg-gray-400">
+                                    <span class="text-xs font-mono">background-image</span>
+                                    <svg class="h-4 w-4 fill-current ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"></path><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"></path></svg>
+                                </button>
+                                <button class="field-resize w-4 absolute -mr-2 right-0 top-0 bottom-0 focus:outline-none"></button>
+                            </div>
+                        </label>
+                        <!-- Field End  -->
+                        <!-- Field Start -->
+                        <label draggable="true" class="field w-full col-span-4">
+                            <input class="hidden" type="radio" name="field-selector">
+                            <div class="relative flex flex-col w-full p-4 bg-white border border-gray-400 rounded-sm cursor-pointer hover:border-black">
+                                <button class="field-resize w-4 absolute -ml-2 left-0 top-0 bottom-0 focus:outline-none"></button>
+                                <div class="flex w-full items-center">
+                                    <button class="cursor-move">
+                                        <svg class="fill-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12zm-7-1h2v-4h4V9h-4V5h-2v4H9v2h4z"/></svg>                                    </button>
+                                    <span class=" ml-4 truncate">Buttons</span>
+                                    <button class="flex items-center h-6 px-2 bg-gray-200 rounded-sm ml-auto hover:bg-gray-400">
+                                        <span class="text-xs font-mono">buttons</span>
+                                        <svg class="h-4 w-4 fill-current ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"></path><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"></path></svg>
+                                    </button>
+                                </div>
+                                <button class="field-resize w-4 absolute -mr-2 right-0 top-0 bottom-0 focus:outline-none"></button>
+                                <!-- Sub Field Container  -->
+                                <div class="grid grid-cols-4 gap-4 w-full flex-shrink-0">
+                                    <!-- Sub Field Start  -->
+                                    <label draggable="true" class="field w-full col-span-2">
+                                        <input class="hidden" type="radio" name="field-selector">
+                                        <div class="relative flex items-center w-full mt-4 p-4 bg-white border border-gray-400 rounded-sm cursor-pointer hover:border-black">
+                                            <button class="field-resize w-4 absolute -ml-2 left-0 top-0 bottom-0 focus:outline-none"></button>
+                                            <button class="cursor-move">
+                                                <svg class="fill-current h-6 w-6" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M5 17v2h14v-2H5zm4.5-4.2h5l.9 2.2h2.1L12.75 4h-1.5L6.5 15h2.1l.9-2.2zM12 5.98L13.87 11h-3.74L12 5.98z"/></svg>
+                                            </button>
+                                            <span class=" ml-4 truncate">Button Text</span>
+                                            <button class="flex items-center h-6 px-2 bg-gray-200 rounded-sm ml-auto hover:bg-gray-400">
+                                                <span class="text-xs font-mono">button-text</span>
+                                                <svg class="h-4 w-4 fill-current ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"></path><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"></path></svg>
+                                            </button>
+                                            <button class="field-resize w-4 absolute -mr-2 right-0 top-0 bottom-0 focus:outline-none"></button>
+                                        </div>
+                                    </label>
+                                    <!-- Sub Field End  -->
+                                    <!-- Sub Field Start  -->
+                                    <label draggable="true" class="field w-full col-span-2">
+                                        <input class="hidden" type="radio" name="field-selector">
+                                        <div class="relative flex items-center w-full mt-4 p-4 bg-white border border-gray-400 rounded-sm cursor-pointer hover:border-black">
+                                            <button class="field-resize w-4 absolute -ml-2 left-0 top-0 bottom-0 focus:outline-none"></button>
+                                            <button class="cursor-move">
+                                                <svg class="fill-current h-6 w-6" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>                                </button>
+                                            </button>
+                                            <span class=" ml-4 truncate">Button URL</span>
+                                            <button class="flex items-center h-6 px-2 bg-gray-200 rounded-sm ml-auto hover:bg-gray-400">
+                                                <span class="text-xs font-mono">button-url</span>
+                                                <svg class="h-4 w-4 fill-current ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"></path><path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"></path></svg>
+                                            </button>
+                                            <button class="field-resize w-4 absolute -mr-2 right-0 top-0 bottom-0 focus:outline-none"></button>
+                                        </div>
+                                    </label>
+                                    <!-- Sub Field End  -->
+                                </div>
+                                <button class="flex items-center justify-center h-6 w-6 border border-black rounded-sm text-black mt-4 ml-auto hover:bg-black hover:text-white focus:outline-none">
+                                    <svg class="w-4 h-4 fill-current" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                                </button>
+                            </div>
+                        </label>
+                        <!-- Field End  -->
+                        
+                    </div>
+                    <button class="flex items-center justify-center h-6 w-6 bg-black rounded-sm text-white mt-4 ml-auto">
+                        <svg class="w-4 h-4 fill-current" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="inspector flex-shrink-0 flex flex-col border-l border-gray-300 overflow-scroll">
+                <div class="flex w-full border-b border-gray-300">
+                    <button class="flex items-center h-12 px-5 text-sm focus:outline-none">Block</button>
+                    <button class="flex items-center h-12 px-5 text-sm font-semibold border-b-4 border-blue-600 focus:outline-none">Field</button>
+                </div>
+                <div class="p-4">
+                    <h4 class="text-sm font-semibold">Field Settings</h4>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Field Label</label>
+                        <input class="flex items-center w-full h-8 rounded-sm border border-gray-600 mt-2 px-2 text-sm" type="text">
+                        <span class="block italic text-xs mt-1">A label or a title for this field.</span>
+                    </div>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Field Name (slug)</label>
+                        <input class="flex items-center w-full h-8 rounded-sm border border-gray-600 mt-2 px-2 text-sm font-mono" type="text">
+                        <span class="block italic text-xs mt-1">Single word, no spaces.</span>
+                    </div>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Field Type</label>
+                        <select class="flex items-center w-full h-8 rounded-sm border border-gray-600 mt-2 px-2 text-sm" name="" id="">
+                            <option value="">Text Field</option>
+                            <option value="">Number Field</option>
+                            <option value="">URL Field</option>
+                            <option value="">Color Field</option>
+                            <option value="">Select Field</option>
+                        </select>
+                    </div>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Field Width</label>
+                        <div class="flex w-full border border-gray-600 rounded-sm mt-2">
+                            <button class="w-0 flex-grow h-8 rounded-sm text-sm focus:outline-none">25%</button>
+                            <button class="w-0 flex-grow h-8 border-l border-gray-600 text-sm focus:outline-none">50%</button>
+                            <button class="w-0 flex-grow h-8 border-l border-gray-600 text-sm focus:outline-none">75%</button>
+                            <button class="w-0 flex-grow h-8 border-l border-gray-600 text-sm focus:outline-none">100%</button>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Help Text</label>
+                        <input class="flex items-center w-full h-8 rounded-sm border border-gray-600 mt-2 px-2 text-sm" type="text">
+                    </div>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Default Value</label>
+                        <input class="flex items-center w-full h-8 rounded-sm border border-gray-600 mt-2 px-2 text-sm" type="text">
+                    </div>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Placeholder Text</label>
+                        <input class="flex items-center w-full h-8 rounded-sm border border-gray-600 mt-2 px-2 text-sm" type="text">
+                    </div>
+                    <div class="mt-5">
+                        <label class="text-sm" for="">Character Limit</label>
+                        <input class="flex items-center w-full h-8 rounded-sm border border-gray-600 mt-2 px-2 text-sm" type="number">
+                    </div>
+                    <div class="flex justify-between mt-5 border-t border-gray-300 pt-3">
+                        <button class="flex items-center bg-red-200 text-sm h-6 px-2 rounded-sm leading-none text-red-700 hover:bg-red-500 hover:text-red-100">Delete</button>
+                        <button class="flex items-center bg-blue-200 text-sm h-6 px-2 rounded-sm leading-none text-blue-700 hover:bg-blue-500 hover:text-blue-100">Duplicate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
