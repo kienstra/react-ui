@@ -174,3 +174,7 @@ input[type=range]::-webkit-slider-runnable-track {
 .range-field:focus::-ms-fill-upper {
     background: #367ebd;
   }
+
+input[type="radio"]:checked + div>.builder-field-move {
+  display: flex;
+}
